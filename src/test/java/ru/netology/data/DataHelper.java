@@ -11,14 +11,6 @@ import java.util.Locale;
 public class DataHelper {
     private static final Faker FAKER = new Faker(new Locale("en"));
 
-    ////
-    public static AuthInfo getInvalidUserInfo() {
-        Faker faker = new Faker(new Locale("en"));
-        String login = faker.name().username();
-        String password = faker.internet().password();
-        return new AuthInfo(login, password);
-    }
-
     private DataHelper() {
     }
 
