@@ -61,4 +61,16 @@ class BankLoginTest {
         verificationPage.verify(verificationCode.getCode());
         verificationPage.verifyErrorNotification("Ошибка! Неверно указан код! Попробуйте ещё раз.");
     }
+
+    @Test
+    @DisplayName("Ввод неправильного пароля 3 раза")
+    void shouldLockAfterThreeUnsuccessfulPasswords() {
+        var authInfo = DataHelper.generateRandomUser();
+        var verificationPage = loginPage.validLogin(authInfo);
+        verificationPage.verifyErrorNotification("Ошибка! Неверно указан логин или пароль");
+        for (int count = 0; count < 3; count++) {
+            loginPage.validLogin(DataHelper.generateRandomUser());
+        }
+        verificationPage.verifyErrorNotification("Превышено максимальное количество попыток авторизации");
+    }
 }

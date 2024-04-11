@@ -19,7 +19,7 @@ public class SQLHelper {
         return DriverManager.getConnection(System.getProperty("db.url"), "app", "pass");
     }
 
-    // метод который умеет получать код верификации
+    // метод, который умеет получать код верификации
     @SneakyThrows
     public static DataHelper.VerificationCode getVerificationCode() {
         var codeSQL = "SELECT code FROM auth_codes ORDER BY created DESC LIMIT 1";
@@ -37,7 +37,7 @@ public class SQLHelper {
         QUERY_RUNNER.execute(connection, "DELETE FROM users");
     }
 
-    // метод который чистить отдельно таблицу auth_codes (для сброса счетчика успешных логинов)
+    // метод, который чистить отдельно таблицу auth_codes (для сброса счетчика успешных логинов)
     @SneakyThrows
     public static void cleanAuthCodes() {
         var connection = getConn();

@@ -27,7 +27,7 @@ public class VerificationPage {
         return new DashboardPage();
     }
 
-    // метод который вводит verificationCode и нажимает кнопку
+    // метод, который вводит verificationCode и нажимает кнопку
     public void verify(String verificationCode) {
         codeField.setValue(verificationCode);
         verifyButton.click();
